@@ -1,0 +1,29 @@
+/* css/variables.css */
+:root {
+    /* Paleta de colores principal inspirada en el mockup */
+    --bg-crema: #F3E9DC;          /* Fondo principal rústico */
+    --bg-tarjetas: #FCF8F3;       /* Fondo de las cartas y carrito */
+    --verde-tlacuacha: #0A5F6B;   /* Títulos y botones principales */
+    --naranja-barro: #B85B2F;     /* Botones secundarios y acentos */
+    --cafe-comal: #5B3E2F;        /* Textos oscuros y bordes */
+    --texto-principal: #333333;   /* Texto de lectura */
+    
+    /* Tipografías */
+    --fuente-titulos: 'Fredoka', sans-serif;
+    --fuente-textos: 'Nunito', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-crema);
+    color: var(--texto-principal);
+    font-family: var(--fuente-textos);
+    margin: 0;
+    padding: 0;
+    /* Esto simula una textura muy sutil de papel de estraza/tortilla */
+    background-image: radial-gradient(rgba(91, 62, 47, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antojitos Las Tlacuachas - El verdadero sabor casero</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/interacciones.css">
+    <link rel="stylesheet" href="css/carrito.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-text">Las <span>Tlacuachas</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#menu">Nuestro Menú</a></li>
+                        <li><a href="#resenas">Reseñas</a></li>
+                        <li><a href="#visitanos">Visítanos</a></li>
+                    </ul>
+                </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="patron-lateral patron-izq"></div>
+        <div class="patron-lateral patron-der"></div>
+
+        <div class="hero-content">
+            <h1>¡El verdadero sabor casero!</h1>
+            <p>Disfruta de los antojitos más deliciosos hechos con el amor, sazón y la receta casera de nuestro chef Tlacoyo a través de Las Tlacuachas.</p>
+            <a href="#menu" class="btn-ordenar">Ver el Menú</a>
+        </div>
+        <div class="hero-image">
+            <img src="assets/imagenes/tlacua-removebg-preview.png" alt="Tlacuache Chef Cocinando">
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+    <h2 class="section-title">Nuestro Menú</h2>
+    
+    <div class="menu-grid">
+        
+        <div class="menu-category">
+            <h3>Antojitos</h3>
+            
+            <div class="menu-card">
+                <img src="assets/imagenes/empanadas preparadas.jpeg" alt="Empanadas Preparadas" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-item-header">
+                        <span class="item-name">Empanadas Preparadas</span>
+                        <span class="item-price">$15.00</span>
+                    </div>
+                    <p>De pollo, queso o picadillo, acompañadas de lechuga, crema y salsa de la casa.</p>
+                    <button class="btn-add-cart" data-name="Empanadas Preparadas" data-price="15.00">Agregar al comal 🛒</button>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <img src="assets/imagenes/garnachas.jpeg" alt="Garnachas" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-item-header">
+                        <span class="item-name">Garnachas</span>
+                        <span class="item-price">$15.00</span>
+                    </div>
+                    <p>Con la salsa secreta de la casa, trocitos de cebolla picada y carne de res deshebrada.</p>
+                    <button class="btn-add-cart" data-name="Garnachas" data-price="15.00">Agregar al comal 🛒</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h3>Bebidas y Más</h3>
+            
+            <div class="menu-card">
+                <img src="assets/imagenes/aguas.jpg" alt="Aguas Frescas" class="menu-card-img">
+                <div class="menu-card-body">
+                    <div class="menu-item-header">
+                        <span class="item-name">Aguas Frescas (Litro)</span>
+                        <span class="item-price">$25.00</span>
+                    </div>
+                    <p>Frutas naturales de temporada, bien frías.</p>
+                    <button class="btn-add-cart" data-name="Agua Fresca 1L" data-price="25.00">Agregar al comal 🛒</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="cart-widget" class="cart-widget hidden">
+    <button id="btn-toggle-cart" class="btn-toggle-cart">
+        <span>🛒 Mi Orden</span>
+        <span id="cart-badge" class="cart-badge">0</span>
+    </button>
+</div>
+
+<div id="cart-modal" class="cart-modal hidden">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h3>Tu Pedido Completo 🌽</h3>
+            <button id="btn-close-cart" class="btn-close-cart">&times;</button>
+        </div>
+        
+        <div id="cart-items-list" class="cart-items-list">
+            <p class="empty-cart-text">El comal está vacío... ¡Añade unos antojitos!</p>
+        </div>
+        
+        <div class="cart-modal-footer">
+            <div class="cart-total-box">
+                <span>Total estimado:</span>
+                <span id="cart-total-price" class="cart-total-price">$0.00</span>
+            </div>
+            <button id="btn-send-whatsapp" class="btn-send-whatsapp">Mandar Orden por WhatsApp 💬</button>
+        </div>
+    </div>
+</div>
+    
+
+    <section class="reviews-section" id="opiniones">
+        <div class="reviews-container">
+            
+            <h2>¿Qué dice nuestra gente de Xalapa? 💬</h2>
+            <p class="reviews-subtitle">Déjanos tu opinión sobre las empanadas y garnachas.</p>
+            
+            <form id="review-form" class="review-form">
+                <input type="text" id="review-name" placeholder="Tu nombre" required>
+                
+                <div class="stars-rating">
+                    <label>Tu calificación: </label>
+                    <select id="review-rating" required>
+                        <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                        <option value="4">⭐⭐⭐⭐ (Muy bueno)</option>
+                        <option value="3">⭐⭐⭐ (Bueno)</option>
+                        <option value="2">⭐⭐ (Regular)</option>
+                        <option value="1">⭐ (Malo)</option>
+                    </select>
+                </div>
+                
+                <textarea id="review-text" placeholder="¿Qué tal estuvo tu antojito?..." rows="3" required></textarea>
+                
+                <button type="submit" class="btn-submit-review">Publicar reseña</button>
+            </form>
+
+            <div id="reviews-list" class="reviews-list">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="info-section" id="visitanos">
+        <div class="info-container">
+            <h2>¿Dónde encontrarnos?</h2>
+            <p>📍 Av. Acueducto 55, Lomas de San Roque, Xalapa-Enríquez, Veracruz.</p>
+            
+            <p class="horario-titulo"><strong>Horarios de atención:</strong></p>
+            <p>Lunes a Sábado: 6:00 PM - 11:30 PM</p>
+
+            <div class="mapa-container">
+                <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.672322047395!2d-96.9388145!3d19.5397441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85db3212330a1231%3A0x123456789abcdef!2sAv.%20Acueducto%2055%2C%20Lomas%20de%20San%20Roque%2C%2091026%20Xalapa-Enr%C3%ADquez%2C%20Ver.!5e0!3m2!1ses-419!2smx!4v1680000000000!5m2!1ses-419!2smx" 
+                width="100%" 
+                height="300" 
+                style="border:0; border-radius: 10px; margin-top: 20px;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+
+             <div class="social-box">
+                <p class="footer-text">¡Síguenos en nuestras redes y antoja a tus amigos!</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1EF893JHdM/" target="_blank" class="social-item">
+                        <span class="social-icon">📘</span> Facebook
+                    </a>
+                    
+                    <a href="AQUÍ_VA_TU_ENLACE_DE_INSTAGRAM" target="_blank" class="social-item">
+                        <span class="social-icon">📸</span> Instagram
+                    </a>
+                    
+                    <a href="AQUÍ_VA_TU_ENLACE_DE_TIKTOK" target="_blank" class="social-item">
+                        <span class="social-icon">🎵</span> TikTok
+                    </a>
+
+                    <a href="https://wa.me/52NUMERO_DE_TELEFONO" target="_blank" class="social-item">
+                        <span class="social-icon">💬</span> WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="social-box">
+                </div>
+            
+            <div class="visitor-counter">
+                <p>🌽 Has visitado nuestro comal <span id="visit-count">1</span> veces</p>
+            </div>
+
+            <div class="footer-credits">
+                <p>&copy; 2026 Antojitos Las Tlacuachas. Hecho con amor familiar.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="copyright">© 2026 Antojitos Las Tlacuachas. Tradición familiar.</p>
+        </div>
+    </footer>
+
+    <script src="js/interacciones.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>
+

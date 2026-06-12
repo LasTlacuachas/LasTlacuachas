@@ -1,0 +1,198 @@
+/* css/interacciones.css */
+
+/* --- ESTILOS DEL PANEL LATERAL DERECHO (OPINIONES Y VISÍTANOS) --- */
+.reviews-section, .info-section {
+    background-color: #EADDCF; /* Color crema oscurecido del panel derecho */
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- SECCIÓN OPINIONES --- */
+.reviews-container h2 {
+    font-family: var(--fuente-titulos);
+    color: var(--verde-tlacuacha);
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.reviews-subtitle {
+    color: var(--cafe-comal);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* Formulario compacto y limpio */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.review-form input, 
+.review-form select, 
+.review-form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--fuente-textos);
+    font-size: 0.9rem;
+}
+
+.stars-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--cafe-comal);
+}
+
+.btn-submit-review {
+    background-color: var(--naranja-barro);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-submit-review:hover {
+    background-color: #9c4c26;
+}
+
+/* Tarjetas de reseñas tipo Mockup */
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.review-stars {
+    color: #F2B705;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.review-card p {
+    margin: 0;
+    color: var(--texto-principal);
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.review-author {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* --- SECCIÓN VISÍTANOS --- */
+.info-section {
+    border-top: 2px dashed #d1c1ad; /* Línea separadora */
+}
+
+.info-container h2 {
+    font-family: var(--fuente-titulos);
+    color: var(--verde-tlacuacha);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.info-container p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--cafe-comal);
+}
+
+/* Botones de Redes Sociales */
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.social-item {
+    background-color: var(--verde-tlacuacha);
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.social-item:hover {
+    transform: scale(1.05);
+    background-color: var(--naranja-barro);
+}
+
+.visitor-counter {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--cafe-comal);
+}
+
+/* === ESTILOS DE LA BARRA LATERAL PLEGABLE (RESEÑAS) === */
+
+#sidebar-resenas {
+    position: fixed; /* La fija a la pantalla */
+    top: 0;
+    right: -100%; /* La esconde completamente a la derecha */
+    width: 380px; /* Ancho de la barra */
+    max-width: 100%; /* Para que no se salga en celulares chiquitos */
+    height: 100vh; /* Alto completo de la pantalla */
+    background-color: #EADDCF; /* Crema tortilla oscurecido */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4); /* Sombra para que resalte sobre el menú */
+    transition: right 0.4s ease-in-out; /* Animación de deslizamiento suave */
+    z-index: 9999; /* Asegura que pase por encima de todo el contenido */
+    padding: 30px;
+    overflow-y: auto; /* Permite hacer scroll si hay muchas reseñas */
+}
+
+/* Esta clase es la que inyectaremos con JS para que la barra entre */
+#sidebar-resenas.activa {
+    right: 0; 
+}
+
+/* Estilos del botón cerrar */
+.btn-cerrar {
+    background-color: #B23A2F; /* Rojo chile */
+    color: #F5E6C8; /* Crema tortilla */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--fuente-titulos, 'Fredoka', sans-serif);
+    font-size: 16px;
+    margin-bottom: 25px;
+    align-self: flex-end; /* Lo alinea a la derecha */
+    transition: background-color 0.3s;
+}
+
+.btn-cerrar:hover {
+    background-color: var(--cafe-comal, #5A3A2E); /* Cambia a Café comal al pasar el ratón */
+}

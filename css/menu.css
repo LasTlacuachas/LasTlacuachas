@@ -1,0 +1,91 @@
+/* css/menu.css */
+.menu-section {
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.menu-category h3 {
+    font-size: 1.8rem;
+    border-bottom: 2px dashed var(--naranja-barro);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.menu-card {
+    background-color: var(--bg-tarjetas);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-card-body {
+    padding: 20px;
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-name {
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    color: var(--texto-principal);
+}
+
+.item-price {
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--naranja-barro);
+}
+
+.menu-card-body p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    min-height: 45px;
+}
+
+.btn-add-cart {
+    width: 100%;
+    background-color: var(--verde-tlacuacha);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
+    font-family: var(--fuente-textos);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-add-cart:hover {
+    background-color: #084952;
+}
