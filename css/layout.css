@@ -162,14 +162,69 @@ header {
    ========================================= */
 @media (max-width: 768px) {
     
-    /* 1. Ocultar el menú y mostrarlo como tarjeta flotante */
+    /* 1. Mostrar el botón de hamburguesa en celulares */
+    .menu-toggle {
+        display: block; /* Hace visibles las 3 rayitas */
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: var(--cafe-comal);
+        cursor: pointer;
+    }
+
+    /* 2. Ocultar el menú y mostrarlo como tarjeta flotante */
     .nav-links {
-        display: none; 
+        display: none; /* Oculto por defecto hasta que se le dé clic */
         flex-direction: column;
-        position: absolute; /* Esto evita que ensanche el encabezado */
-        top: 100%; /* Aparece justo debajo de la barra blanca del header */
+        position: absolute; 
+        top: 100%; /* Aparece justo debajo de la barra del header */
         left: 0;
         width: 100%;
-        background-color: var(--bg-tarjetas, #FFFFFF);
+        background-color: var(--crema-tortilla, #F5E6C8);
         padding: 20px 0;
-        box-shadow: 0 10
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1); /* Sombra completada */
+        text-align: center;
+    }
+
+    /* Esta clase la usará tu JavaScript para mostrar el menú */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* 3. SECCIÓN HERO: El Tlacuache arriba y texto centrado abajo */
+    .hero {
+        flex-direction: column; /* Apila todo de arriba a abajo */
+        text-align: center;
+        padding: 30px 15px; /* Reducimos el espacio excesivo en celular */
+    }
+
+    .hero-image {
+        order: -1; /* ¡Magia! Esto obliga a la imagen a ir primero */
+        margin-bottom: 15px;
+    }
+
+    .hero-image img {
+        max-width: 160px; /* Tamaño ideal del Tlacuache para que no abarque toda la pantalla */
+    }
+
+    .hero-content {
+        order: 2; /* El texto va después de la imagen */
+        padding-right: 0; /* Quitamos el espacio derecho de la PC */
+        max-width: 85%; /* Dejamos un margen libre a los lados para los patrones */
+        margin: 0 auto;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Achicamos un poco el título principal */
+    }
+
+    /* 4. PATRONES LATERALES: Delgaditos para no invadir */
+    .patron-lateral {
+        width: 25px; /* Más delgados en celular para que no estorben al texto */
+        opacity: 0.6; /* Ligeramente transparentes para que el texto resalte más */
+    }
+}
