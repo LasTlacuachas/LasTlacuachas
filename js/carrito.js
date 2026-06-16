@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Usamos api.whatsapp.com que es mucho más seguro para computadoras y celulares
         const urlWhatsApp = `https://api.whatsapp.com/send?phone=${TELEFONO_NEGOCIO}&text=${mensajeUrl}`;
 
-        // Redirige al cliente abriendo la conversación oficial de WhatsApp
-        window.open(urlWhatsApp, '_blank');
+        // Redirige al cliente en la misma pestaña para que el celular no bloquee la app
+        window.location.href = urlWhatsApp;
     });
 });
