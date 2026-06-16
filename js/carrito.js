@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // REEMPLAZA AQUÍ: Pon los 10 dígitos del teléfono celular de Las Tlacuachas
-    const TELEFONO_NEGOCIO = "https://wa.me/522281210057"; 
+    const TELEFONO_NEGOCIO = "522281210057"; 
 
     let cart = [];
 
