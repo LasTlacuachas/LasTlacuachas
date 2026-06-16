@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Codificación segura para convertir los saltos de línea y emojis en URL
         const mensajeUrl = encodeURIComponent(mensaje);
-        const urlWhatsApp = `https://wa.me/${TELEFONO_NEGOCIO}?text=${mensajeUrl}`;
+        // Usamos api.whatsapp.com que es mucho más seguro para computadoras y celulares
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${TELEFONO_NEGOCIO}&text=${mensajeUrl}`;
 
         // Redirige al cliente abriendo la conversación oficial de WhatsApp
         window.open(urlWhatsApp, '_blank');
