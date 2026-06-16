@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mensaje += `--------------------------------------\n`;
         mensaje += `💰 *Total estimado:* $${total.toFixed(2)}\n\n`;
-        mensaje += `📌 _Por favor, confírmenme el tiempo de espera y el costo de envío si aplica._`;
+        mensaje += `📌 _Por favor, confírmenme el tiempo de espera para pasar por mi pedido, ¡¡Gracias!!._`;
 
         // Codificación segura para convertir los saltos de línea y emojis en URL
         const mensajeUrl = encodeURIComponent(mensaje);
