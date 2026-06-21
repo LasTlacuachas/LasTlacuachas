@@ -1,9 +1,16 @@
+// =======================================================
+// ☁️ CONEXIÓN A SUPABASE (LA LIBRETA EN LA NUBE)
+// =======================================================
+// Esto va afuera del DOMContentLoaded para que la página lo cargue primero
+const supabaseUrl = 'https://yrmidffmzyooperjnxpw.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlybWlkZmZtenlvb3BlcmpueHB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5ODIwNDUsImV4cCI6MjA5NzU1ODA0NX0.uCMYcQOlEb1uAcTK2p_-gvbZDPpiXA6PWExo6cewS_U';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // =======================================================
     // 🌽 LOGICA DEL CONTADOR DE VISITAS (SOLO ADMIN)
     // =======================================================
-    // El contador suma automáticamente en el LocalStorage
     let visits = localStorage.getItem('contador_tlacuachas');
     
     if (visits === null) {
@@ -12,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         visits = parseInt(visits) + 1;
     }
     localStorage.setItem('contador_tlacuachas', visits);
-    // Ya no buscamos 'visit-count' para evitar errores en consola.
-    // Recuerda que puedes ver el número en F12 > Application > Local Storage.
 
 
     // =======================================================
@@ -30,59 +35,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =======================================================
-    // 💬 LOGICA DE LA SECCIÓN DE RESEÑAS
+    // 💬 LOGICA DE LA SECCIÓN DE RESEÑAS (CON SUPABASE)
     // =======================================================
     const reviewForm = document.getElementById('review-form');
     const reviewsList = document.getElementById('reviews-list');
 
-    const defaultReviews = [
-        { name: "Brenda M.", rating: 5, text: "¡Las empanadas preparadas de pollo están de locura! Súper recomendadas." },
-        { name: "Carlos Xalapa", rating: 4, text: "Las garnachas tienen una salsa de chile seco riquísima. Volveré pronto." }
-    ];
-
-    let savedReviews = JSON.parse(localStorage.getItem('reseñas_tlacuachas'));
-    if (!savedReviews) {
-        savedReviews = defaultReviews;
-        localStorage.setItem('reseñas_tlacuachas', JSON.stringify(savedReviews));
-    }
-
-    function displayReviews() {
+    // Función para descargar las reseñas desde la nube
+    async function cargarResenas() {
         if (!reviewsList) return;
+
+        const { data: resenas, error } = await supabase
+            .from('resenas')
+            .select('*');
+
+        if (error) {
+            console.error('Error al cargar reseñas:', error);
+            return;
+        }
+
+        // Limpiamos la lista y usamos tu mismo diseño de tarjeta para pintarlas
         reviewsList.innerHTML = '';
-        savedReviews.slice().reverse().forEach(review => {
+        
+        // El .reverse() es para que las más nuevas salgan hasta arriba
+        resenas.reverse().forEach(review => {
             const card = document.createElement('div');
             card.className = 'review-card';
-            const stars = '⭐'.repeat(review.rating);
+            
+            // Transformamos el número a estrellitas (ej. 5 = ⭐⭐⭐⭐⭐)
+            const stars = '⭐'.repeat(parseInt(review.calificacion) || 5); 
+            
             card.innerHTML = `
                 <div class="review-card-header">
-                    <span class="review-author">${review.name}</span>
+                    <span class="review-author">${review.nombre}</span>
                     <span class="review-stars">${stars}</span>
                 </div>
-                <p>"${review.text}"</p>
+                <p>"${review.opinion}"</p>
             `;
             reviewsList.appendChild(card);
         });
     }
 
+    // Cuando el cliente le da al botón de enviar reseña
     if (reviewForm) {
-        reviewForm.addEventListener('submit', (e) => {
+        reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // Tomamos los IDs exactos de tu HTML
             const nameInput = document.getElementById('review-name');
             const ratingInput = document.getElementById('review-rating');
             const textInput = document.getElementById('review-text');
 
-            const newReview = {
-                name: nameInput.value,
-                rating: parseInt(ratingInput.value),
-                text: textInput.value
-            };
+            // Lo mandamos a las columnas correctas en Supabase
+            const { error } = await supabase
+                .from('resenas')
+                .insert([{ 
+                    nombre: nameInput.value, 
+                    calificacion: ratingInput.value, 
+                    opinion: textInput.value 
+                }]);
 
-            savedReviews.push(newReview);
-            localStorage.setItem('reseñas_tlacuachas', JSON.stringify(savedReviews));
-            displayReviews();
-            reviewForm.reset();
+            if (error) {
+                alert('¡Ups! Hubo un problema al enviar tu reseña.');
+                console.error(error);
+            } else {
+                alert('¡Gracias por tu reseña! A mi mamá y a mi tía les dará mucho gusto.');
+                reviewForm.reset();
+                cargarResenas(); // Recargamos para que se vea su reseña al instante
+            }
         });
     }
 
-    displayReviews();
+    // Arrancamos cargando las reseñas de la base de datos al abrir la página
+    cargarResenas();
 });
