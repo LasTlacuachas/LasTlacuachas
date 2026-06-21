@@ -3,7 +3,7 @@
 // =======================================================
 // Esto va afuera del DOMContentLoaded para que la página lo cargue primero
 const supabaseUrl = 'https://yrmidffmzyooperjnxpw.supabase.co';
-const supabaseKey = 'TU_CLAVE';
+const supabaseKey = 'sb_publishable_q-5Ts7eizs-NoyArz2hpJA_PGjdf52v';
 
 const supabaseClient = supabase.createClient(
     supabaseUrl,
