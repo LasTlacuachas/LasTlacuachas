@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('¡Ups! Hubo un problema al enviar tu reseña.');
                 console.error(error);
             } else {
-                alert('¡Gracias por tu reseña! A mi mamá y a mi tía les dará mucho gusto.');
+                alert('¡Gracias por tu reseña! A nuestro equipo le da mucho gusto.');
                 reviewForm.reset();
                 cargarResenas(); // Recargamos para que se vea su reseña al instante
             }
