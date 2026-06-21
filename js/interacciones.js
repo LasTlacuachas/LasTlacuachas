@@ -53,15 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Limpiamos la lista y usamos tu mismo diseño de tarjeta para pintarlas
         reviewsList.innerHTML = '';
         
-        // El .reverse() es para que las más nuevas salgan hasta arriba
         resenas.reverse().forEach(review => {
             const card = document.createElement('div');
             card.className = 'review-card';
             
-            // Transformamos el número a estrellitas (ej. 5 = ⭐⭐⭐⭐⭐)
+            // OJO: Asegúrate de que en Supabase la columna se llame "calificacion" (sin acento)
             const stars = '⭐'.repeat(parseInt(review.calificacion) || 5); 
             
             card.innerHTML = `
@@ -69,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="review-author">${review.nombre}</span>
                     <span class="review-stars">${stars}</span>
                 </div>
-                <p>"${review.opinion}"</p>
+                                <p>"${review.comentario}"</p> 
             `;
             reviewsList.appendChild(card);
         });
@@ -80,18 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
         reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Tomamos los IDs exactos de tu HTML
             const nameInput = document.getElementById('review-name');
             const ratingInput = document.getElementById('review-rating');
             const textInput = document.getElementById('review-text');
 
-            // Lo mandamos a las columnas correctas en Supabase
+            // AQUÍ ESTABA EL OTRO ERROR: Cambiamos 'opinion' por 'comentario'
             const { error } = await supabase
                 .from('resenas')
                 .insert([{ 
                     nombre: nameInput.value, 
                     calificacion: ratingInput.value, 
-                    opinion: textInput.value 
+                    comentario: textInput.value 
                 }]);
 
             if (error) {
@@ -100,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert('¡Gracias por tu reseña! A nuestro equipo le da mucho gusto.');
                 reviewForm.reset();
-                cargarResenas(); // Recargamos para que se vea su reseña al instante
+                cargarResenas();
             }
         });
     }
