@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .from('resenas')
             .select('*');
 
+        console.log('Reseñas recibidas:', resenas);
+        console.log('Error:', error);
         if (error) {
             console.error('Error al cargar reseñas:', error);
             return;
