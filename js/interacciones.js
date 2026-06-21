@@ -3,8 +3,12 @@
 // =======================================================
 // Esto va afuera del DOMContentLoaded para que la página lo cargue primero
 const supabaseUrl = 'https://yrmidffmzyooperjnxpw.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlybWlkZmZtenlvb3BlcmpueHB3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5ODIwNDUsImV4cCI6MjA5NzU1ODA0NX0.uCMYcQOlEb1uAcTK2p_-gvbZDPpiXA6PWExo6cewS_U';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseKey = 'TU_CLAVE';
+
+const supabaseClient = supabase.createClient(
+    supabaseUrl,
+    supabaseKey
+);
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function cargarResenas() {
         if (!reviewsList) return;
 
-        const { data: resenas, error } = await supabase
+        const { data: resenas, error } = await supabaseClient
             .from('resenas')
             .select('*');
 
@@ -83,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const textInput = document.getElementById('review-text');
 
             // AQUÍ ESTABA EL OTRO ERROR: Cambiamos 'opinion' por 'comentario'
-            const { error } = await supabase
+            const { error } = await supabaseClient
                 .from('resenas')
                 .insert([{ 
                     nombre: nameInput.value, 
